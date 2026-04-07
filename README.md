@@ -1,4 +1,4 @@
-<img width="812" height="696" alt="ScreenShot_2026-04-07_131941_960" src="https://github.com/user-attachments/assets/423d2092-3088-4fef-b55d-ae102c2125e7" /># douyin-tv-webview
+#douyin-tv-webview
 🎮 遥控器控制
 直接操作
 ↑ → 上一个视频（W）
