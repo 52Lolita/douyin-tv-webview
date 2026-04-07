@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">抖音 TV</string>
+    <string name="menu_title">功能菜单（长按确认键打开）</string>
+    <string name="menu_mouse">1. 鼠标模式（虚拟光标）</string>
+    <string name="menu_player_fullscreen">2. 播放器全屏 (H)</string>
+    <string name="menu_web_immersive">3. 网页沉浸式全屏 (Y)</string>
+    <string name="menu_play_pause">4. 暂停 / 播放 (Space)</string>
+    <string name="menu_refresh">5. 刷新页面</string>
+    <string name="menu_autoplay">6. 自动连播开关 (K)</string>
+    <string name="menu_clear_screen">7. 清屏 (J)</string>
+    <string name="menu_close">关闭</string>
+    <string name="mouse_mode_hint">鼠标模式：方向键移动 · 确认=点击 · 返回=退出 · 长按确认打开菜单</string>
+</resources>

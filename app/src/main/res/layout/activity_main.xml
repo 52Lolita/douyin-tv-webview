@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".MainActivity">
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+    <ImageView
+        android:id="@+id/cursorView"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:contentDescription="@string/menu_mouse"
+        android:elevation="8dp"
+        android:src="@drawable/ic_cursor"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/mouseModeHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_margin="16dp"
+        android:background="#CC000000"
+        android:padding="12dp"
+        android:text="@string/mouse_mode_hint"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/menuOverlay"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#E6000000"
+        android:elevation="12dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="gone"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="@string/menu_title"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMouseMode"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_mouse"
+            app:strokeColor="@android:color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/menu_button_bg"
+            android:textColor="@drawable/menu_button_text_selector" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPlayerFullscreen"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_player_fullscreen"
+            app:strokeColor="@android:color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/menu_button_bg"
+            android:textColor="@drawable/menu_button_text_selector" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnWebImmersive"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_web_immersive"
+            app:strokeColor="@android:color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/menu_button_bg"
+            android:textColor="@drawable/menu_button_text_selector" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPlayPause"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_play_pause"
+            app:strokeColor="@android:color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/menu_button_bg"
+            android:textColor="@drawable/menu_button_text_selector" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRefresh"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_refresh"
+            app:strokeColor="@android:color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/menu_button_bg"
+            android:textColor="@drawable/menu_button_text_selector" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAutoplay"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_autoplay"
+            app:strokeColor="@android:color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/menu_button_bg"
+            android:textColor="@drawable/menu_button_text_selector" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnClearScreen"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_clear_screen"
+            app:strokeColor="@android:color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/menu_button_bg"
+            android:textColor="@drawable/menu_button_text_selector" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMenuClose"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/menu_close"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/menu_button_bg"
+            android:textColor="@drawable/menu_button_text_selector" />
+    </LinearLayout>
+</FrameLayout>
