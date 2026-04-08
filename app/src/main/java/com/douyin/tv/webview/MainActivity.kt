@@ -165,35 +165,59 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnPlayerFullscreen.setOnClickListener {
             hideMenu()
-            dispatchKeyboardShortcut(key = "h", code = "KeyH")
+            binding.webView.post {
+                dispatchKeyboardShortcut(
+                    key = "h",
+                    code = "KeyH",
+                    legacyKeyCode = DOM_KEYCODE_H
+                )
+            }
         }
         binding.btnWebImmersive.setOnClickListener {
             hideMenu()
-            dispatchKeyboardShortcut(key = "y", code = "KeyY")
+            binding.webView.post {
+                dispatchKeyboardShortcut(
+                    key = "y",
+                    code = "KeyY",
+                    legacyKeyCode = DOM_KEYCODE_Y
+                )
+            }
         }
         binding.btnPlayPause.setOnClickListener {
             hideMenu()
-            dispatchKeyboardShortcut(key = " ", code = "Space")
+            binding.webView.post {
+                dispatchKeyboardShortcut(
+                    key = " ",
+                    code = "Space",
+                    legacyKeyCode = DOM_KEYCODE_SPACE
+                )
+            }
         }
         binding.btnRefresh.setOnClickListener {
             hideMenu()
-            binding.webView.reload()
+            binding.webView.post {
+                binding.webView.reload()
+            }
         }
         binding.btnAutoplay.setOnClickListener {
             hideMenu()
-            dispatchKeyboardShortcut(
-                key = "k",
-                code = "KeyK",
-                legacyKeyCode = DOM_KEYCODE_K
-            )
+            binding.webView.post {
+                dispatchKeyboardShortcut(
+                    key = "k",
+                    code = "KeyK",
+                    legacyKeyCode = DOM_KEYCODE_K
+                )
+            }
         }
         binding.btnClearScreen.setOnClickListener {
             hideMenu()
-            dispatchKeyboardShortcut(
-                key = "j",
-                code = "KeyJ",
-                legacyKeyCode = DOM_KEYCODE_J
-            )
+            binding.webView.post {
+                dispatchKeyboardShortcut(
+                    key = "j",
+                    code = "KeyJ",
+                    legacyKeyCode = DOM_KEYCODE_J
+                )
+            }
         }
         binding.btnMenuClose.setOnClickListener { hideMenu() }
     }
@@ -516,6 +540,9 @@ class MainActivity : AppCompatActivity() {
         private const val DOM_KEYCODE_R = 82
         private const val DOM_KEYCODE_Z = 90
         private const val DOM_KEYCODE_X = 88
+        private const val DOM_KEYCODE_H = 72
+        private const val DOM_KEYCODE_Y = 89
+        private const val DOM_KEYCODE_SPACE = 32
         private const val DOM_KEYCODE_K = 75
         private const val DOM_KEYCODE_J = 74
         /** 短按单次移动（dp） */
