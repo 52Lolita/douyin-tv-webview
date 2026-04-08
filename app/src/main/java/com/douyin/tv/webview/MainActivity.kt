@@ -165,59 +165,27 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnPlayerFullscreen.setOnClickListener {
             hideMenu()
-            binding.webView.post {
-                dispatchKeyboardShortcut(
-                    key = "h",
-                    code = "KeyH",
-                    legacyKeyCode = DOM_KEYCODE_H
-                )
-            }
+            binding.webView.post { injectNativeKeyToWebView(KeyEvent.KEYCODE_H) }
         }
         binding.btnWebImmersive.setOnClickListener {
             hideMenu()
-            binding.webView.post {
-                dispatchKeyboardShortcut(
-                    key = "y",
-                    code = "KeyY",
-                    legacyKeyCode = DOM_KEYCODE_Y
-                )
-            }
+            binding.webView.post { injectNativeKeyToWebView(KeyEvent.KEYCODE_Y) }
         }
         binding.btnPlayPause.setOnClickListener {
             hideMenu()
-            binding.webView.post {
-                dispatchKeyboardShortcut(
-                    key = " ",
-                    code = "Space",
-                    legacyKeyCode = DOM_KEYCODE_SPACE
-                )
-            }
+            binding.webView.post { injectNativeKeyToWebView(KeyEvent.KEYCODE_SPACE) }
         }
         binding.btnRefresh.setOnClickListener {
             hideMenu()
-            binding.webView.post {
-                binding.webView.reload()
-            }
+            binding.webView.post { binding.webView.reload() }
         }
         binding.btnAutoplay.setOnClickListener {
             hideMenu()
-            binding.webView.post {
-                dispatchKeyboardShortcut(
-                    key = "k",
-                    code = "KeyK",
-                    legacyKeyCode = DOM_KEYCODE_K
-                )
-            }
+            binding.webView.post { injectNativeKeyToWebView(KeyEvent.KEYCODE_K) }
         }
         binding.btnClearScreen.setOnClickListener {
             hideMenu()
-            binding.webView.post {
-                dispatchKeyboardShortcut(
-                    key = "j",
-                    code = "KeyJ",
-                    legacyKeyCode = DOM_KEYCODE_J
-                )
-            }
+            binding.webView.post { injectNativeKeyToWebView(KeyEvent.KEYCODE_J) }
         }
         binding.btnMenuClose.setOnClickListener { hideMenu() }
     }
@@ -469,8 +437,23 @@ class MainActivity : AppCompatActivity() {
         }
 
     /**
+     * 通过原生 Android [KeyEvent] 向 WebView 注入按键。
+     * 与 JS `new KeyboardEvent()` 不同，原生事件在浏览器端 `isTrusted=true`，
+     * 抖音等页面不会忽略。直接调用 [WebView.dispatchKeyEvent] 不经过
+     * [Activity.dispatchKeyEvent]，因此不会被 [handleBrowseModeKey] 拦截。
+     */
+    private fun injectNativeKeyToWebView(androidKeyCode: Int) {
+        val downTime = SystemClock.uptimeMillis()
+        val down = KeyEvent(downTime, downTime, KeyEvent.ACTION_DOWN, androidKeyCode, 0)
+        val up = KeyEvent(downTime, downTime + TAP_UP_DELAY_MS, KeyEvent.ACTION_UP, androidKeyCode, 0)
+        binding.webView.dispatchKeyEvent(down)
+        binding.webView.dispatchKeyEvent(up)
+    }
+
+    /**
      * 通过 [KeyboardEvent] 向页面派发按键（与需求文档一致）。
      * [legacyKeyCode]：部分页面仍监听 `keyCode`/`which`，与 PC 行为对齐并同时派发到 `document` 与 `window`。
+     * 注意：JS 创建的事件 `isTrusted=false`，仅用于浏览模式中不需要可信事件的快捷键。
      */
     private fun dispatchKeyboardShortcut(
         key: String,
